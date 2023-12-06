@@ -58,7 +58,7 @@ class Uploader:
         while True:
             item = await self.queue.get()
 
-            path = item.path.relative_to(self.base_dir)
+            path = item.path.relative_to(self.base_dir.parent)
 
             upload_link = await self._get_upload_link()
 
@@ -72,9 +72,7 @@ class Uploader:
                 data = {
                     "file": ProgressFileReader(item.path, pbar),
                     "parent_dir": "/",
-                    "relative_path": str(path.parent)
-                    if path.parent != Path("")
-                    else "",
+                    "relative_path": str(path.parent),
                     "replace": "1",
                 }
                 r = await self.client.post(upload_link, data=data)
