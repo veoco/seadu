@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="seadu",
-    version="0.1.0",
+    version="0.1.1",
     author="Veoco",
     author_email="one@nomox.cn",
     description="Seafile Downloader and Uploader",
